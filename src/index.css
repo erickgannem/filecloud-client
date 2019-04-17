@@ -1,14 +1,175 @@
-body {
-  margin: 0;
+* {
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+html,
+body,
+#root,
+.App {
+  background: #f5f5f5;
+  height: 100%;
+  width: 100%;
+}
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  background: #0091ea;
+  padding: 10px 20px;
+  z-index: 2;
+}
+
+nav div.right-side ul.nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+nav div.right-side ul.nav-links li {
+  list-style: none;
+}
+
+nav div.right-side ul.nav-links .Nav-link {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #2c2c2c;
+  font-weight: bold;
+}
+nav div.right-side div.user-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+nav div.right-side div.user-options small:hover {
+  cursor: pointer;
+  color: #eee;
+}
+nav div.left-side img:hover {
+  cursor: pointer;
+}
+div.Homepage {
+  background-color: #f2faff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.btn {
+  padding: 10px;
+  border: 1px solid #0091ea;
+  background: #0091ea;
+  color: #fefefe;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.AuthForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.AuthForm input {
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  border: 1px solid #bdbdbd;
+}
+
+.AuthForm button:hover {
+  cursor: pointer;
+}
+.AuthForm form {
+  width: 50%;
+  background: #eee;
+  border-radius: 5px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+div.loggedOut {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000018;
+  padding: 50px;
+  border-radius: 5px;
+}
+
+div.folders-container {
+  display: flex;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 20px;
+  border: 1px solid rgb(228, 228, 228);
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.loggedOut h1 {
+  margin: 20px;
+}
+div.folders-list {
+  width: 100%;
+  height: 100%;
+}
+div.folder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0;
+}
+div.folder-item:hover {
+  cursor: pointer;
+  background: #eee;
+}
+
+div.folder-item-identifier {
+  display: flex;
+  align-items: center;
+}
+p.folder-item-title {
+  color: #333333;
+  margin: 0 5px;
+}
+div.error-popup {
+  background: rgb(255, 226, 226);
+  border: 1px solid rgb(255, 166, 166);
+  padding: 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+div.folder-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }

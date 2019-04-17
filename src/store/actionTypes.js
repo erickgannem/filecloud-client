@@ -1,0 +1,7 @@
+export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const ADD_ERROR = "SET_ERROR";
+export const REMOVE_ERROR = "REMOVE_ERROR";
+export const SET_LOADING = "SET_LOADING";
+export const UNSET_LOADING = "UNSET_LOADING";
+export const GET_SINGLE_FOLDER = "GET_SINGLE_FOLDER";
+export const CREATE_FOLDER = "CREATE_FOLDER";
