@@ -3,9 +3,9 @@ import { MdFolder } from "react-icons/md";
 import { MdSettings } from "react-icons/md";
 import { withRouter } from "react-router-dom";
 
-const FolderItemList = ({ history, folder }) => {
+const FolderItemList = ({ history, folder, user }) => {
   const handleRedirecting = e => {
-    history.push(`/folders/${folder._id}`);
+    history.push(`/users/${user._id}/folders/${folder._id}`);
   };
   return (
     <div className="folder-item" onClick={handleRedirecting}>

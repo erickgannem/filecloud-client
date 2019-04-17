@@ -1,22 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-// Cualquier usuario logado es capaz de ver contenido de otro usuario mediante alteración de la url.
-// Nota para correción posterior.
 export default function withAuth(ComponentToBeRendered) {
   class Authenticate extends Component {
+    checkAuthorization = () =>
+      this.props.currentUser.user._id === this.props.match.params.user_id;
+
     componentWillMount() {
-      const { isAuthenticated } = this.props;
-      if (!isAuthenticated) {
+      const { currentUser } = this.props;
+      const isAuthorized = this.checkAuthorization();
+
+      if (!currentUser.isAuthenticated) {
         return this.props.history.push("/users/signin");
+      }
+      if (!isAuthorized) {
+        return this.props.history.push("/");
       }
     }
     render() {
-      return <ComponentToBeRendered {...this.props} />;
+      return (
+        <ComponentToBeRendered
+          {...this.props}
+          isAuthorized={this.checkAuthorization()}
+        />
+      );
     }
   }
   const mapStateToProps = state => ({
-    isAuthenticated: state.currentUser.isAuthenticated
+    currentUser: state.currentUser
   });
   return connect(
     mapStateToProps,

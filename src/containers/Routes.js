@@ -54,7 +54,7 @@ const Routes = props => {
       />
       <Route
         exact
-        path="/folders/:folder_id"
+        path="/users/:user_id/folders/:folder_id"
         render={props => (
           <FolderContent
             {...props}

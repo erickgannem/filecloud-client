@@ -8,8 +8,10 @@ class FolderContent extends Component {
     files: []
   };
   async componentDidMount() {
+    const { isAuthorized } = this.props;
     const { currentUser, match } = this.props;
-    if (currentUser.isAuthenticated) {
+
+    if (currentUser.isAuthenticated && isAuthorized) {
       const { _id } = currentUser.user;
       const { folder_id } = match.params;
       await this.props.onFetch(_id, folder_id);

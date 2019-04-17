@@ -13,6 +13,7 @@ export const fetchSingleFolder = (user_id, folder_id) => dispatch =>
     try {
       dispatch(setLoading());
       // Revisar por qué necesito configurar el header nuevamente
+
       const response = await api.get(
         `/api/users/${user_id}/folders/${folder_id}`,
         {

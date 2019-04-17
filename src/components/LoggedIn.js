@@ -5,7 +5,7 @@ export default class LoggedIn extends Component {
   render() {
     const { user } = this.props.currentUser;
     const hasFolders = user.folders.map(folder => (
-      <FolderItemList key={folder._id} folder={folder}>
+      <FolderItemList key={folder._id} folder={folder} user={user}>
         {folder.title}
       </FolderItemList>
     ));

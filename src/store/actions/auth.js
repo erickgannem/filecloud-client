@@ -22,13 +22,17 @@ export const authUser = (endpoint, data) => dispatch =>
     endpoint = endpoint.toLowerCase();
     try {
       dispatch(setLoading());
+
       const response = await api.post(`/api/users/${endpoint}`, data);
       const user = { ...response.data };
       localStorage.setItem("jwtToken", user.token);
+
       setAuthorizationToken(user.token);
+
       dispatch(setCurrentUser(user));
       dispatch(removeError());
       dispatch(unsetLoading());
+
       resolve();
     } catch (err) {
       dispatch(addError(err.message));
