@@ -20,9 +20,7 @@ const Routes = props => {
       <Route
         exact
         path="/"
-        render={props => (
-          <Homepage {...props} isAuthenticated={currentUser.isAuthenticated} />
-        )}
+        render={props => <Homepage {...props} currentUser={currentUser} />}
       />
       <Route
         exact

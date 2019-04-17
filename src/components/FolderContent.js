@@ -21,8 +21,8 @@ class FolderContent extends Component {
     );
     const hasNoFiles = <h3>It's empty here</h3>;
     return (
-      <div className="folders-container">
-        <div className="folders-list">
+      <div className="files-container">
+        <div className="file-list">
           {!!this.state.files.length > 0 ? hasFiles : hasNoFiles}
         </div>
       </div>

@@ -1,11 +1,18 @@
 import React from "react";
 import LoggedOut from "./LoggedOut";
-import LoggedInContainer from "../containers/LoggedInContainer";
+import LoggedIn from "./LoggedIn";
 
-const Homepage = props => (
-  <div className="Homepage">
-    {props.isAuthenticated ? <LoggedInContainer /> : <LoggedOut />}
-  </div>
-);
+const Homepage = props => {
+  const { currentUser } = props;
+  return (
+    <div className="Homepage">
+      {currentUser.isAuthenticated ? (
+        <LoggedIn currentUser={currentUser} />
+      ) : (
+        <LoggedOut />
+      )}
+    </div>
+  );
+};
 
 export default Homepage;
