@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LoadingScreen from "./LoadingScreen";
 
 export default class AuthForm extends Component {
   state = {
@@ -20,8 +21,10 @@ export default class AuthForm extends Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { signUp, errors } = this.props;
-    return (
+    const { signUp, errors, isLoading } = this.props;
+    return isLoading ? (
+      <LoadingScreen />
+    ) : (
       <div className="AuthForm">
         {errors.message ? (
           <div className="error-popup">{errors.message}</div>

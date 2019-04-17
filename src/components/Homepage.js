@@ -7,7 +7,7 @@ const Homepage = props => {
   return (
     <div className="Homepage">
       {currentUser.isAuthenticated ? (
-        <LoggedIn currentUser={currentUser} />
+        <LoggedIn {...props} currentUser={currentUser} />
       ) : (
         <LoggedOut />
       )}

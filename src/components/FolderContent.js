@@ -1,26 +1,36 @@
 import React, { Component } from "react";
+import LoadingScreen from "./LoadingScreen";
+import FileItem from "./FileItem";
+import withAuth from "../hocs/withAuth";
 
 class FolderContent extends Component {
   state = {
     files: []
   };
   async componentDidMount() {
-    const { _id } = this.props.currentUser.user;
-    const { folder_id } = this.props.match.params;
-    await this.props.onFetch(_id, folder_id);
-    this.setState({ files: this.props.currentFolder.files });
+    const { currentUser, match } = this.props;
+    if (currentUser.isAuthenticated) {
+      const { _id } = currentUser.user;
+      const { folder_id } = match.params;
+      await this.props.onFetch(_id, folder_id);
+      this.setState({ files: this.props.currentFolder.files });
+    }
+    return;
   }
 
   render() {
+    const { isLoading } = this.props;
     const hasFiles = (
-      <ul>
+      <div>
         {this.state.files.map(file => (
-          <li key={file._id}>{file.title}</li>
+          <FileItem key={file._id} file={file} />
         ))}
-      </ul>
+      </div>
     );
     const hasNoFiles = <h3>It's empty here</h3>;
-    return (
+    return isLoading ? (
+      <LoadingScreen />
+    ) : (
       <div className="files-container">
         <div className="file-list">
           {!!this.state.files.length > 0 ? hasFiles : hasNoFiles}
@@ -30,4 +40,4 @@ class FolderContent extends Component {
   }
 }
 
-export default FolderContent;
+export default withAuth(FolderContent);

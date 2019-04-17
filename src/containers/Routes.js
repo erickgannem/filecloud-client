@@ -13,14 +13,17 @@ const Routes = props => {
     currentUser,
     currentFolder,
     errors,
-    fetchSingleFolder
+    fetchSingleFolder,
+    loading
   } = props;
   return (
     <Switch>
       <Route
         exact
         path="/"
-        render={props => <Homepage {...props} currentUser={currentUser} />}
+        render={props => (
+          <Homepage {...props} currentUser={currentUser} isLoading={loading} />
+        )}
       />
       <Route
         exact
@@ -31,6 +34,7 @@ const Routes = props => {
             textButton="Sign me in"
             onAuth={authUser}
             errors={errors}
+            isLoading={loading}
           />
         )}
       />
@@ -44,6 +48,7 @@ const Routes = props => {
             signUp
             onAuth={authUser}
             errors={errors}
+            isLoading={loading}
           />
         )}
       />
@@ -56,6 +61,7 @@ const Routes = props => {
             onFetch={fetchSingleFolder}
             currentUser={currentUser}
             currentFolder={currentFolder}
+            isLoading={loading}
           />
         )}
       />
@@ -67,7 +73,8 @@ const Routes = props => {
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
   errors: state.errors,
-  currentFolder: state.currentFolder
+  currentFolder: state.currentFolder,
+  loading: state.loading
 });
 
 export default connect(

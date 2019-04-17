@@ -11,6 +11,8 @@ body,
   background: #f5f5f5;
   height: 100%;
   width: 100%;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+  font-size: 1.015em;
 }
 .App {
   display: flex;
@@ -174,4 +176,32 @@ div.folder-content {
   align-items: center;
   width: 100%;
   height: 100%;
+}
+div.loading-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.file-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #eee;
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+div.file-item-container:hover {
+  cursor: pointer;
+}
+div.file-item-header {
+  display: flex;
+  align-items: center;
+}
+a.file-link {
+  text-decoration: none;
+  color: #333333;
 }
