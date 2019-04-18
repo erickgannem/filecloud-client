@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoadingScreen from "./LoadingScreen";
+import LoadingScreen from "../LoadingScreen";
 
 export default class AuthForm extends Component {
   state = {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import Homepage from "../components/Homepage";
+import HomePage from "../components/HomePage";
 import AuthForm from "../components/AuthForm";
 import { authUser } from "../store/actions/auth";
 import { fetchSingleFolder } from "../store/actions/folder";
@@ -22,7 +22,7 @@ const Routes = props => {
         exact
         path="/"
         render={props => (
-          <Homepage {...props} currentUser={currentUser} isLoading={loading} />
+          <HomePage {...props} currentUser={currentUser} isLoading={loading} />
         )}
       />
       <Route

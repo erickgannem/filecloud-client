@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 
 export default function withAuth(ComponentToBeRendered) {
   class Authenticate extends Component {
-    checkAuthorization = () =>
-      this.props.currentUser.user._id === this.props.match.params.user_id;
+    checkAuthorization = () => {
+      const { currentUser, match } = this.props;
 
+      return currentUser.user._id === match.params.user_id;
+    };
     componentWillMount() {
       const { currentUser } = this.props;
       const isAuthorized = this.checkAuthorization();

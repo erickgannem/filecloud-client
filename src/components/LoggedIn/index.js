@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FolderItemList from "./FolderItemList";
+import FolderItemList from "../FolderItemList";
 
 export default class LoggedIn extends Component {
   render() {

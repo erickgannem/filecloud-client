@@ -1,6 +1,6 @@
 import React from "react";
-import LoggedOut from "./LoggedOut";
-import LoggedIn from "./LoggedIn";
+import LoggedOut from "../LoggedOut";
+import LoggedIn from "../LoggedIn";
 
 const Homepage = props => {
   const { currentUser } = props;
