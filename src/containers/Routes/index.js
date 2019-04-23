@@ -1,20 +1,24 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import HomePage from "../components/HomePage";
-import AuthForm from "../components/AuthForm";
-import { authUser } from "../store/actions/auth";
-import { fetchSingleFolder } from "../store/actions/folder";
-import FolderContent from "../components/FolderContent";
+
+import HomePage from "../../components/HomePage";
+import AuthForm from "../../components/AuthForm";
+import FolderContent from "../../components/FolderContent";
+
+import { authUser } from "../../store/actions/auth";
+import { fetchSingleFolder } from "../../store/actions/folder";
+import { createFolderRequest } from "../../store/actions/folder";
 
 const Routes = props => {
   const {
     authUser,
     currentUser,
-    currentFolder,
+    folders,
     errors,
     fetchSingleFolder,
-    loading
+    loading,
+    createFolderRequest
   } = props;
   return (
     <Switch>
@@ -22,7 +26,12 @@ const Routes = props => {
         exact
         path="/"
         render={props => (
-          <HomePage {...props} currentUser={currentUser} isLoading={loading} />
+          <HomePage
+            {...props}
+            currentUser={currentUser}
+            isLoading={loading}
+            createFolder={createFolderRequest}
+          />
         )}
       />
       <Route
@@ -60,7 +69,7 @@ const Routes = props => {
             {...props}
             onFetch={fetchSingleFolder}
             currentUser={currentUser}
-            currentFolder={currentFolder}
+            currentFolder={folders.currentFolder}
             isLoading={loading}
           />
         )}
@@ -73,11 +82,11 @@ const Routes = props => {
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
   errors: state.errors,
-  currentFolder: state.currentFolder,
+  folders: state.folders,
   loading: state.loading
 });
 
 export default connect(
   mapStateToProps,
-  { authUser, fetchSingleFolder }
+  { authUser, fetchSingleFolder, createFolderRequest }
 )(Routes);

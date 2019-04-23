@@ -1,0 +1,35 @@
+.file-item-container {
+  width: 100vw;
+  background: var(--color-6);
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  border-top: 1px solid var(--color-8);
+  border-bottom: 1px solid var(--color-8);
+}
+.file-item-header {
+  display: flex;
+  align-items: center;
+}
+.file-link {
+  text-decoration: none;
+  color: var(--color-1);
+}
+.file-icon {
+  color: var(--color-1);
+}
+.file-more {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.file-more:hover {
+  background: var(--color-3);
+}
+.file-more:hover .more-icon {
+  color: var(--color-6);
+}

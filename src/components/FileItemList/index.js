@@ -1,17 +1,21 @@
 import React from "react";
-import { MdClose, MdInsertDriveFile } from "react-icons/md";
+import { MdClose, MdInsertDriveFile, MdMoreVert } from "react-icons/md";
+
+import "./style.css";
 
 const FileItem = props => {
   const { title } = props.file;
   return (
     <div className="file-item-container">
       <div className="file-item-header">
-        <MdInsertDriveFile size={24} />
+        <MdInsertDriveFile size={24} className="file-icon" />
         <a href="#" className="file-link">
           <span className="file-name">{title}</span>
         </a>
       </div>
-      <MdClose size={24} color="red" />
+      <div className="file-more">
+        <MdMoreVert size={24} className="more-icon" />
+      </div>
     </div>
   );
 };

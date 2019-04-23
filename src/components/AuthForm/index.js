@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import LoadingScreen from "../LoadingScreen";
 
+import "./style.css";
+
 export default class AuthForm extends Component {
   state = {
     username: "",
@@ -32,7 +34,7 @@ export default class AuthForm extends Component {
           ""
         )}
         <form onSubmit={this.handleSubmit}>
-          <h2>{signUp ? "Sign up" : "Sign in"}</h2>
+          <h2 className="form-title">{signUp ? "Sign Up" : "Sign In"}</h2>
           {signUp && (
             <input
               type="text"
@@ -40,6 +42,8 @@ export default class AuthForm extends Component {
               id="username"
               placeholder="Username"
               onChange={this.handleChange}
+              className="keyboard-input"
+              value={this.state.username}
             />
           )}
 
@@ -49,6 +53,8 @@ export default class AuthForm extends Component {
             id="email"
             placeholder="Email"
             onChange={this.handleChange}
+            className="keyboard-input"
+            value={this.state.email}
           />
           <input
             type="password"
@@ -56,10 +62,22 @@ export default class AuthForm extends Component {
             id="password"
             placeholder="Password"
             onChange={this.handleChange}
+            className="keyboard-input"
           />
-          <button type="submit" className="btn" onClick={this.handleSubmit}>
+          <button
+            type="submit"
+            className="btn submit-btn"
+            onClick={this.handleSubmit}
+          >
             {this.props.textButton}
           </button>
+          {!signUp && (
+            <small>
+              <a href="#" className="forgot">
+                Forgot your password?
+              </a>
+            </small>
+          )}
         </form>
       </div>
     );

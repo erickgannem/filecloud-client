@@ -1,0 +1,60 @@
+.files-container {
+  display: flex;
+  background: var(--color-2);
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background: var(--color-2);
+}
+.files-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  background: var(--color-2);
+  padding: 15px;
+}
+.file-name-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--color-2);
+  border: 1px solid var(--color-7);
+  border-radius: 5px;
+  text-align: center;
+  color: var(--color-1);
+}
+.file-name {
+  padding: 5px;
+}
+.arrow-back-icon-wrapper {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--color-7);
+}
+.arrow-back-icon-wrapper:hover {
+  background: var(--color-3);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+}
+.arrow-back-icon-wrapper:hover .arrow-back-icon {
+  color: var(--color-6);
+}
+
+.upload {
+  width: 100%;
+  padding: 5px;
+  background: var(--color-6);
+  box-shadow: inset 1px 1px 2px -1px var(--shadow);
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+.upload-text {
+  color: var(--color-1);
+  user-select: none;
+}

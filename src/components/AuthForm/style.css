@@ -1,0 +1,59 @@
+.AuthForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.AuthForm input {
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  border: 1px solid #bdbdbd;
+}
+
+.AuthForm button:hover {
+  cursor: pointer;
+}
+.AuthForm form {
+  width: 30%;
+  background: var(--color-6);
+  border-radius: 5px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-8);
+}
+.keyboard-input {
+  border-radius: 5px;
+  background: var(--color-2);
+}
+.keyboard-input::placeholder {
+  opacity: 0.5;
+}
+.error-popup {
+  background: var(--color-5);
+  border: 1px solid var(--color-4);
+  color: var(--color-2);
+  padding: 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  width: 30%;
+}
+.form-title {
+  margin: 10px 0;
+  color: var(--color-1);
+}
+.submit-btn {
+  padding: 10px 15px;
+  margin: 10px 0;
+  font-size: 1em;
+}
+.forgot {
+  text-decoration: none;
+  color: var(--color-3);
+  font-size: 1.1em;
+}

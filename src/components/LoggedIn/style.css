@@ -1,0 +1,61 @@
+div.folders-container {
+  position: relative;
+  display: flex;
+  background: var(--color-2);
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background: var(--color-2);
+}
+
+.folder-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--color-2);
+  padding: 15px;
+}
+
+.folder-name {
+  background: var(--color-2);
+  padding: 5px;
+  border: 1px solid var(--color-7);
+  border-radius: 5px;
+  text-align: center;
+}
+.folder-options {
+  display: flex;
+  align-items: center;
+  background: var(--color-2);
+  padding: 5px;
+  border: 1px solid var(--color-7);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.create-new-folder {
+  color: var(--color-1);
+}
+.folders-list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--color-2);
+}
+.folder-icon {
+  color: var(--color-1);
+  margin-right: 5px;
+}
+.folder-options:hover {
+  background: var(--color-1);
+}
+
+.folder-options:hover .create-new-folder {
+  color: var(--color-2);
+}

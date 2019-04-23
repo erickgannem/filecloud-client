@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://filecloud-server.herokuapp.com"
+  baseURL: "http://localhost:3030"
 });
 
 export const setAuthorizationToken = token => {

@@ -35,7 +35,7 @@ export const authUser = (endpoint, data) => dispatch =>
 
       resolve();
     } catch (err) {
-      dispatch(addError(err.message));
+      dispatch(addError(err.response.data.message));
       dispatch(unsetLoading());
       reject();
     }

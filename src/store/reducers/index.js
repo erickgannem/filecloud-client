@@ -2,13 +2,13 @@ import { combineReducers } from "redux";
 import currentUser from "./currentUser";
 import errors from "./errors";
 import loading from "./loading";
-import currentFolder from "./currentFolder";
+import folders from "./folders";
 
 const rootReducer = combineReducers({
   currentUser,
   errors,
   loading,
-  currentFolder
+  folders
 });
 
 export default rootReducer;

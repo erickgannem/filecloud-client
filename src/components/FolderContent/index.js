@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import LoadingScreen from "../LoadingScreen";
 import FileItemList from "../FileItemList";
+import CleanScreen from "../CleanScreen";
 import withAuth from "../../hocs/withAuth";
+import Dropzone from "react-dropzone";
+import { api } from "../../services/api";
+import { MdArrowBack } from "react-icons/md";
+
+import "./style.css";
 
 class FolderContent extends Component {
   state = {
@@ -19,9 +25,22 @@ class FolderContent extends Component {
     }
     return;
   }
+  handleUpload = files => {
+    const { _id: userId, token } = this.props.currentUser.user;
+    const { _id: folderId } = this.props.currentFolder;
 
+    files.forEach(file => {
+      const data = new FormData();
+      data.append("file", file);
+      api.post(`/api/users/${userId}/folders/${folderId}/files`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+    });
+  };
   render() {
-    const { isLoading } = this.props;
+    const { isLoading, currentFolder } = this.props;
     const hasFiles = (
       <div>
         {this.state.files.map(file => (
@@ -29,14 +48,32 @@ class FolderContent extends Component {
         ))}
       </div>
     );
-    const hasNoFiles = <h3>It's empty here</h3>;
 
     return isLoading ? (
       <LoadingScreen />
     ) : (
       <div className="files-container">
+        <div className="files-header">
+          <div className="file-name-wrapper">
+            <div
+              className="arrow-back-icon-wrapper"
+              onClick={this.props.history.goBack}
+            >
+              <MdArrowBack size={24} className="arrow-back-icon" />
+            </div>
+            <small className="file-name">{currentFolder.title}</small>
+          </div>
+        </div>
+        <Dropzone onDropAccepted={this.handleUpload}>
+          {({ getRootProps, getInputProps }) => (
+            <div className="upload" {...getRootProps()}>
+              <input {...getInputProps()} />
+              <p className="upload-text">Click here or drop files to upload</p>
+            </div>
+          )}
+        </Dropzone>
         <div className="file-list">
-          {!!this.state.files.length > 0 ? hasFiles : hasNoFiles}
+          {!!this.state.files.length > 0 ? hasFiles : <CleanScreen />}
         </div>
       </div>
     );

@@ -1,0 +1,122 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  background: var(--color-2);
+  padding: 10px 20px;
+  z-index: 2;
+  color: var(--color-1);
+  box-shadow: 1px 1px 3px 1px var(--shadow);
+}
+.Nav-link {
+  color: var(--color-1);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+.signup {
+  color: var(--color-2);
+  background: var(--color-3);
+}
+nav div.right-side ul.nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+nav div.right-side ul.nav-links li {
+  list-style: none;
+}
+
+nav div.right-side ul.nav-links .Nav-link {
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.user-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+nav div.right-side div.user-options:hover,
+.logo-wrapper {
+  cursor: pointer;
+}
+nav div.left-side img:hover {
+  cursor: pointer;
+}
+
+.active,
+.user-options:hover {
+  background: var(--color-1);
+  color: var(--color-2);
+}
+
+.menu-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.dropdown-menu {
+  position: absolute;
+  width: 100%;
+  top: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-2);
+  border-radius: 5px;
+  border: 1px solid var(--color-1);
+}
+
+.drop-item {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.drop-separator {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background: var(--color-1);
+}
+.logout {
+  background: var(--color-4);
+  color: var(--color-2);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.logout:hover {
+  background: var(--color-5);
+}
+.drop-item:hover {
+  cursor: pointer;
+}
+.drop-item:hover:not(.logout) {
+  background: var(--color-1);
+  color: var(--color-2);
+}
+.logo-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  user-select: none;
+}
+.logo-wrapper > img {
+  margin: 0 10px;
+}
+.logo-wrapper > h1 {
+  font-family: "Comfortaa";
+  font-size: 28px;
+}
+.half-logo {
+  color: var(--color-3);
+}
