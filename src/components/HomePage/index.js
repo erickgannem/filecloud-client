@@ -5,7 +5,7 @@ import LoggedIn from "../LoggedIn";
 import "./style.css";
 
 const Homepage = props => {
-  const { currentUser, createFolder } = props;
+  const { currentUser, createFolder, fetchFolders, folders } = props;
   return (
     <div className="Homepage">
       {currentUser.isAuthenticated ? (
@@ -13,6 +13,8 @@ const Homepage = props => {
           {...props}
           currentUser={currentUser}
           createFolder={createFolder}
+          fetchFolders={fetchFolders}
+          folders={folders}
         />
       ) : (
         <LoggedOut />

@@ -7,8 +7,13 @@ import AuthForm from "../../components/AuthForm";
 import FolderContent from "../../components/FolderContent";
 
 import { authUser } from "../../store/actions/auth";
-import { fetchSingleFolder } from "../../store/actions/folder";
-import { createFolderRequest } from "../../store/actions/folder";
+
+import {
+  createFolderRequest,
+  setCurrentFolder,
+  fetchSingleFolder,
+  fetchFolders
+} from "../../store/actions/folder";
 
 const Routes = props => {
   const {
@@ -18,7 +23,9 @@ const Routes = props => {
     errors,
     fetchSingleFolder,
     loading,
-    createFolderRequest
+    createFolderRequest,
+    setCurrentFolder,
+    fetchFolders
   } = props;
   return (
     <Switch>
@@ -31,6 +38,8 @@ const Routes = props => {
             currentUser={currentUser}
             isLoading={loading}
             createFolder={createFolderRequest}
+            fetchFolders={fetchFolders}
+            folders={folders}
           />
         )}
       />
@@ -71,6 +80,7 @@ const Routes = props => {
             currentUser={currentUser}
             currentFolder={folders.currentFolder}
             isLoading={loading}
+            setCurrentFolder={setCurrentFolder}
           />
         )}
       />
@@ -88,5 +98,11 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { authUser, fetchSingleFolder, createFolderRequest }
+  {
+    authUser,
+    fetchSingleFolder,
+    createFolderRequest,
+    setCurrentFolder,
+    fetchFolders
+  }
 )(Routes);

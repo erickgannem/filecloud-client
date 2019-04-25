@@ -25,6 +25,10 @@ class FolderContent extends Component {
     }
     return;
   }
+  componentWillUnmount() {
+    const { dispatch, setCurrentFolder } = this.props;
+    dispatch(setCurrentFolder({}));
+  }
   handleUpload = files => {
     const { _id: userId, token } = this.props.currentUser.user;
     const { _id: folderId } = this.props.currentFolder;

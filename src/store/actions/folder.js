@@ -1,17 +1,38 @@
-import { GET_SINGLE_FOLDER, CREATE_FOLDER } from "../actionTypes";
+import { SET_CURRENT_FOLDER, CREATE_FOLDER, GET_FOLDERS } from "../actionTypes";
 import { addError, removeError } from "../actions/error";
 import { setLoading, unsetLoading } from "../actions/loading";
 import { api } from "../../services/api";
 
-export const getSingleFolder = folder => ({
-  type: GET_SINGLE_FOLDER,
+export const setCurrentFolder = folder => ({
+  type: SET_CURRENT_FOLDER,
   folder
 });
+export const fetchSingleFolder = (userId, folderId) => dispatch =>
+  new Promise(async (resolve, reject) => {
+    try {
+      dispatch(setLoading());
+      const response = await api.get(
+        `/api/users/${userId}/folders/${folderId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.jwtToken}`
+          }
+        }
+      );
+      dispatch(unsetLoading());
+      dispatch(removeError());
+      dispatch(setCurrentFolder(response.data));
+      resolve();
+    } catch (err) {
+      dispatch(addError(err.response.data.message));
+      reject();
+    }
+  });
+
 export const createFolder = newFolder => ({
   type: CREATE_FOLDER,
   newFolder
 });
-
 export const createFolderRequest = (folderTitle, user) => dispatch =>
   new Promise(async (resolve, reject) => {
     try {
@@ -32,28 +53,27 @@ export const createFolderRequest = (folderTitle, user) => dispatch =>
       dispatch(createFolder(response.data));
       resolve();
     } catch (err) {
-      dispatch(addError(err.message));
+      dispatch(addError(err.response.data.message));
       reject();
     }
   });
-export const fetchSingleFolder = (user_id, folder_id) => dispatch =>
+
+export const getFolders = folders => ({
+  type: GET_FOLDERS,
+  folders
+});
+export const fetchFolders = userId => dispatch =>
   new Promise(async (resolve, reject) => {
     try {
-      dispatch(setLoading());
-      const response = await api.get(
-        `/api/users/${user_id}/folders/${folder_id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.jwtToken}`
-          }
+      const response = await api.get(`/api/users/${userId}/folders`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.jwtToken}`
         }
-      );
-      dispatch(unsetLoading());
-      dispatch(removeError());
-      dispatch(getSingleFolder(response.data));
+      });
+      dispatch(getFolders(response.data));
       resolve();
     } catch (err) {
-      dispatch(addError(err.message));
+      dispatch(addError(err.response.data.message));
       reject();
     }
   });

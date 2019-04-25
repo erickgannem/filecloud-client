@@ -1,13 +1,15 @@
-import { GET_SINGLE_FOLDER, CREATE_FOLDER } from "../actionTypes";
+import { SET_CURRENT_FOLDER, CREATE_FOLDER, GET_FOLDERS } from "../actionTypes";
 
-const INITIAL_STATE = { currentFolder: {}, newFolder: {} };
+const INITIAL_STATE = { all: [], currentFolder: {} };
 
 export default function folders(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case GET_SINGLE_FOLDER:
+    case SET_CURRENT_FOLDER:
       return { ...state, currentFolder: { ...action.folder } };
     case CREATE_FOLDER:
-      return { ...state, newFolder: { ...action.newFolder } };
+      return { ...state };
+    case GET_FOLDERS:
+      return { ...state, all: [...action.folders] };
     default:
       return state;
   }

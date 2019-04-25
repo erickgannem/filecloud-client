@@ -1,25 +1,41 @@
 import React, { Component } from "react";
 import FolderItemList from "../FolderItemList";
 import Modal from "../Modal";
+import CleanScreen from "../CleanScreen";
+import { fetchFolders } from "../../store/actions/folder";
+
 import { MdCreateNewFolder } from "react-icons/md";
+
+import socket from "socket.io-client";
 
 import "./style.css";
 
 export default class LoggedIn extends Component {
   state = {
-    showModal: false
+    showModal: false,
+    folders: []
   };
   modalHandler = e => {
     this.setState({ showModal: !this.state.showModal });
   };
+  subscribeToUserConnection = () => {
+    const { currentUser } = this.props;
+    const io = socket("http://localhost:3030");
+    io.emit("connectRoom", currentUser.user._id);
+  };
+  async componentDidMount() {
+    const { currentUser, fetchFolders } = this.props;
+    await fetchFolders(currentUser.user._id);
+    this.setState({ folders: this.props.folders.all });
+  }
   render() {
     const { user } = this.props.currentUser;
-    const hasFolders = user.folders.map(folder => (
+    const hasFolders = this.state.folders.map(folder => (
       <FolderItemList key={folder._id} folder={folder} user={user}>
         {folder.title}
       </FolderItemList>
     ));
-    const hasNoFolders = <h2>It's empty here</h2>;
+
     return (
       <div className="folders-container">
         {this.state.showModal && (
@@ -44,7 +60,7 @@ export default class LoggedIn extends Component {
         </div>
 
         <div className="folders-list">
-          {!!user.folders.length ? hasFolders : hasNoFolders}
+          {!!user.folders.length ? hasFolders : <CleanScreen />}
         </div>
       </div>
     );

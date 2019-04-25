@@ -10,25 +10,28 @@ import Navbar from "./containers/Navbar";
 
 const store = configStore();
 
-if (localStorage.jwtToken) {
-  const token = localStorage.jwtToken;
-  setAuthorizationToken(token);
-  try {
-    const user = jwtDecode(token);
-    store.dispatch(setCurrentUser({ ...user, token }));
-  } catch (err) {
-    store.dispatch(setCurrentUser({}));
-  }
-}
-
 class App extends Component {
+  async componentDidMount() {
+    if (localStorage.jwtToken) {
+      const token = localStorage.jwtToken;
+      setAuthorizationToken(token);
+      try {
+        const user = jwtDecode(token);
+        store.dispatch(setCurrentUser({ ...user, token }));
+      } catch (err) {
+        store.dispatch(setCurrentUser({}));
+      }
+    }
+  }
   render() {
     return (
       <Provider store={store}>
         <BrowserRouter>
           <div className="App">
             <Navbar />
-            <Routes />
+            <div className="content-wrapper">
+              <Routes />
+            </div>
           </div>
         </BrowserRouter>
       </Provider>
