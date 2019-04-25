@@ -15,18 +15,31 @@ export default class LoggedIn extends Component {
     showModal: false,
     folders: []
   };
+  updateFolders = data => {
+    this.setState(prevState => ({
+      folders: [...prevState.folders, data]
+    }));
+  };
   modalHandler = e => {
     this.setState({ showModal: !this.state.showModal });
   };
-  subscribeToUserConnection = () => {
-    const { currentUser } = this.props;
-    const io = socket("http://localhost:3030");
-    io.emit("connectRoom", currentUser.user._id);
+
+  // Socket.io
+  io = socket("http://localhost:3030");
+  susbscribeToFolderCreation = () => {
+    this.io.emit("userSession", this.props.currentUser.user._id);
+    this.io.on("folder", data => this.updateFolders(data));
   };
+  // -- Socket.io --
+
   async componentDidMount() {
     const { currentUser, fetchFolders } = this.props;
     await fetchFolders(currentUser.user._id);
+    this.susbscribeToFolderCreation();
     this.setState({ folders: this.props.folders.all });
+  }
+  componentWillUnmount() {
+    this.io.removeAllListeners();
   }
   render() {
     const { user } = this.props.currentUser;
