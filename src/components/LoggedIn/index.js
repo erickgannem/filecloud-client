@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import FolderItemList from "../FolderItemList";
 import Modal from "../Modal";
 import CleanScreen from "../CleanScreen";
-import { fetchFolders } from "../../store/actions/folder";
-
 import { MdCreateNewFolder } from "react-icons/md";
 
 import socket from "socket.io-client";
@@ -15,7 +13,7 @@ export default class LoggedIn extends Component {
     showModal: false,
     folders: []
   };
-  updateFolders = data => {
+  foldersHandler = data => {
     this.setState(prevState => ({
       folders: [...prevState.folders, data]
     }));
@@ -28,14 +26,14 @@ export default class LoggedIn extends Component {
   io = socket("http://localhost:3030");
   susbscribeToFolderCreation = () => {
     this.io.emit("userSession", this.props.currentUser.user._id);
-    this.io.on("folder", data => this.updateFolders(data));
+    this.io.on("folder", data => this.foldersHandler(data));
   };
   // -- Socket.io --
 
   async componentDidMount() {
+    this.susbscribeToFolderCreation();
     const { currentUser, fetchFolders } = this.props;
     await fetchFolders(currentUser.user._id);
-    this.susbscribeToFolderCreation();
     this.setState({ folders: this.props.folders.all });
   }
   componentWillUnmount() {
@@ -43,12 +41,6 @@ export default class LoggedIn extends Component {
   }
   render() {
     const { user } = this.props.currentUser;
-    const hasFolders = this.state.folders.map(folder => (
-      <FolderItemList key={folder._id} folder={folder} user={user}>
-        {folder.title}
-      </FolderItemList>
-    ));
-
     return (
       <div className="folders-container">
         {this.state.showModal && (
@@ -73,7 +65,15 @@ export default class LoggedIn extends Component {
         </div>
 
         <div className="folders-list">
-          {!!user.folders.length ? hasFolders : <CleanScreen />}
+          {!!this.state.folders ? (
+            this.state.folders.map(folder => (
+              <FolderItemList key={folder._id} folder={folder} user={user}>
+                {folder.title}
+              </FolderItemList>
+            ))
+          ) : (
+            <CleanScreen />
+          )}
         </div>
       </div>
     );
