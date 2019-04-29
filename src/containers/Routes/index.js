@@ -12,7 +12,8 @@ import {
   createFolderRequest,
   setCurrentFolder,
   fetchSingleFolder,
-  fetchFolders
+  fetchFolders,
+  deleteFolderRequest
 } from "../../store/actions/folder";
 
 const Routes = props => {
@@ -25,7 +26,8 @@ const Routes = props => {
     loading,
     createFolderRequest,
     setCurrentFolder,
-    fetchFolders
+    fetchFolders,
+    deleteFolderRequest
   } = props;
   return (
     <Switch>
@@ -40,6 +42,7 @@ const Routes = props => {
             createFolder={createFolderRequest}
             fetchFolders={fetchFolders}
             folders={folders}
+            deleteFolder={deleteFolderRequest}
           />
         )}
       />
@@ -103,6 +106,7 @@ export default connect(
     fetchSingleFolder,
     createFolderRequest,
     setCurrentFolder,
-    fetchFolders
+    fetchFolders,
+    deleteFolderRequest
   }
 )(Routes);

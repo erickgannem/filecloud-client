@@ -68,7 +68,16 @@ export default class LoggedIn extends Component {
         <div className="folders-list">
           {!!this.state.folders ? (
             this.state.folders.map(folder => (
-              <FolderItemList key={folder._id} folder={folder} user={user}>
+              <FolderItemList
+                key={folder._id}
+                folder={folder}
+                user={user}
+                deleteFolder={this.props.deleteFolder.bind(
+                  null,
+                  user._id,
+                  folder._id
+                )}
+              >
                 {folder.title}
               </FolderItemList>
             ))

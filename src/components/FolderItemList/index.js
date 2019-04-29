@@ -29,7 +29,11 @@ class FolderItemList extends Component {
           <MdSettings className="settings-icon" size={24} />
           {this.state.showMenu && (
             <div className="menu-list-options">
-              <div className="list-option" id="delete-option">
+              <div
+                className="list-option"
+                id="delete-option"
+                onClick={this.props.deleteFolder}
+              >
                 Delete
               </div>
               <div className="list-option" id="rename-option">
