@@ -1,7 +1,38 @@
-import { SET_CURRENT_FOLDER, CREATE_FOLDER, GET_FOLDERS } from "../actionTypes";
+import {
+  SET_CURRENT_FOLDER,
+  CREATE_FOLDER,
+  GET_FOLDERS,
+  DELETE_FOLDER
+} from "../actionTypes";
 import { addError, removeError } from "../actions/error";
 import { setLoading, unsetLoading } from "../actions/loading";
 import { api } from "../../services/api";
+
+export const deleteFolder = folderId => ({
+  type: DELETE_FOLDER,
+  folderId
+});
+export const deleteFolderRequest = (userId, folderId) => dispatch =>
+  new Promise(async (resolve, reject) => {
+    try {
+      dispatch(setLoading());
+      const response = await api.delete(
+        `/api/users/${userId}/folders/${folderId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.jwtToken}`
+          }
+        }
+      );
+      dispatch(unsetLoading());
+      dispatch(removeError());
+      dispatch(deleteFolder(response.data._id));
+      resolve();
+    } catch (err) {
+      dispatch(addError(err.response.data.message));
+      reject();
+    }
+  });
 
 export const setCurrentFolder = folder => ({
   type: SET_CURRENT_FOLDER,

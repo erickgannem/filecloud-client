@@ -31,8 +31,9 @@ export default class LoggedIn extends Component {
   // -- Socket.io --
 
   async componentDidMount() {
-    this.susbscribeToFolderCreation();
     const { currentUser, fetchFolders } = this.props;
+
+    this.susbscribeToFolderCreation();
     await fetchFolders(currentUser.user._id);
     this.setState({ folders: this.props.folders.all });
   }
