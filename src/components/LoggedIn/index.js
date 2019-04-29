@@ -13,12 +13,12 @@ export default class LoggedIn extends Component {
     showModal: false,
     folders: []
   };
-  newFolderHandler = data => {
+  newFolderUpdater = data => {
     this.setState(prevState => ({
       folders: [...prevState.folders, data]
     }));
   };
-  deleteFolderHandler = data => {
+  deleteFolderUpdater = data => {
     this.setState(prevState => ({
       folders: prevState.folders.filter(folder => folder._id !== data._id)
     }));
@@ -31,8 +31,8 @@ export default class LoggedIn extends Component {
   io = socket("http://localhost:3030");
   susbscribeToFolderCreation = () => {
     this.io.emit("userSession", this.props.currentUser.user._id);
-    this.io.on("create folder", data => this.newFolderHandler(data));
-    this.io.on("delete folder", data => this.deleteFolderHandler(data));
+    this.io.on("create folder", data => this.newFolderUpdater(data));
+    this.io.on("delete folder", data => this.deleteFolderUpdater(data));
   };
   // -- Socket.io --
 
