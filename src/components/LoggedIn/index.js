@@ -10,7 +10,7 @@ import "./style.css";
 
 export default class LoggedIn extends Component {
   state = {
-    showModal: false,
+    modal: false,
     folders: []
   };
   newFolderUpdater = data => {
@@ -24,7 +24,7 @@ export default class LoggedIn extends Component {
     }));
   };
   modalHandler = e => {
-    this.setState({ showModal: !this.state.showModal });
+    this.setState({ modal: !this.state.modal });
   };
 
   // Socket.io
@@ -50,7 +50,7 @@ export default class LoggedIn extends Component {
     const { user } = this.props.currentUser;
     return (
       <div className="folders-container">
-        {this.state.showModal && (
+        {this.state.modal && (
           <Modal
             modalHandler={this.modalHandler.bind(this)}
             createFolder={this.props.createFolder}
