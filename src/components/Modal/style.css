@@ -10,15 +10,15 @@
   justify-content: center;
 }
 .modal-itself {
-  background: var(--color-2);
-  border: 1px solid var(--color-8);
-  box-shadow: none;
-  padding: 15px;
-  border-radius: 5px;
+  background: var(--bluegrey-50);
+  border: 1px solid var(--bluegrey-100);
+  box-shadow: 1px 1px 5px 1px var(--shadow);
+  padding: 30px;
+  border-radius: 4px;
 }
 .modal-title {
-  margin-bottom: 10px;
-  color: var(--color-1);
+  margin-bottom: 15px;
+  color: var(--bluegrey-900);
 }
 form {
   display: flex;
@@ -29,9 +29,9 @@ form * {
   margin: 5px 0;
 }
 .title-input {
-  border: 1px solid var(--color-3);
-  padding: 8px;
-  border-radius: 5px;
+  border: 1px solid var(--bluegrey-200);
+  padding: 15px;
+  border-radius: 4px;
 }
 .modal-buttons {
   width: 100%;
@@ -45,13 +45,14 @@ form * {
   cursor: pointer;
 }
 .create-button {
-  background: var(--color-9);
-  border: 1px solid var(--color-10);
+  background: var(--green-400);
+  border: 1px solid var(--green-500);
+  color: white;
 }
 .cancel-button {
-  background: var(--color-8);
-  border: 1px solid var(--color-7);
-  color: var(--color-1);
+  background: var(--red-400);
+  border: 1px solid var(--red-600);
+  color: white;
 }
 .modal-button {
   width: 100%;
