@@ -7,7 +7,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: var(--color-2);
+  background: var(--blue-800);
   padding: 10px 20px;
   z-index: 2;
   color: var(--color-1);
@@ -120,6 +120,9 @@ nav div.left-side img:hover {
   font-family: "Comfortaa";
   font-size: 28px;
 }
-.half-logo {
-  color: var(--color-3);
+.half-logo-first {
+color: var(--color-2);
+}
+.half-logo-second {
+  color: var(--shadow);
 }

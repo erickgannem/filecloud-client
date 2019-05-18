@@ -9,11 +9,8 @@ import FolderContent from "../../components/FolderContent";
 import { authUser } from "../../store/actions/auth";
 
 import {
-  createFolderRequest,
   setCurrentFolder,
-  fetchSingleFolder,
-  fetchFolders,
-  deleteFolderRequest
+  fetchSingleFolder
 } from "../../store/actions/folder";
 
 const Routes = props => {
@@ -24,27 +21,14 @@ const Routes = props => {
     errors,
     fetchSingleFolder,
     loading,
-    createFolderRequest,
-    setCurrentFolder,
-    fetchFolders,
-    deleteFolderRequest
+    setCurrentFolder
   } = props;
   return (
     <Switch>
       <Route
         exact
         path="/"
-        render={props => (
-          <HomePage
-            {...props}
-            currentUser={currentUser}
-            isLoading={loading}
-            createFolder={createFolderRequest}
-            fetchFolders={fetchFolders}
-            folders={folders}
-            deleteFolder={deleteFolderRequest}
-          />
-        )}
+        render={props => <HomePage {...props} currentUser={currentUser} />}
       />
       <Route
         exact
@@ -104,9 +88,6 @@ export default connect(
   {
     authUser,
     fetchSingleFolder,
-    createFolderRequest,
-    setCurrentFolder,
-    fetchFolders,
-    deleteFolderRequest
+    setCurrentFolder
   }
 )(Routes);

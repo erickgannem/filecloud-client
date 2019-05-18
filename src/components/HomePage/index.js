@@ -1,6 +1,6 @@
 import React from "react";
 import LoggedOut from "../LoggedOut";
-import LoggedIn from "../LoggedIn";
+import LoggedInContainer from "../../containers/LoggedInContainer";
 
 import "./style.css";
 
@@ -15,7 +15,7 @@ const Homepage = props => {
   return (
     <div className="Homepage">
       {currentUser.isAuthenticated ? (
-        <LoggedIn
+        <LoggedInContainer
           {...props}
           currentUser={currentUser}
           createFolder={createFolder}

@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Roboto");
 
 :root {
+  --blue-600: #1e88e5;
+  --blue-800: #1565c0;
+  --red-400: #ef5350;
+  --red-600: #e53935;
   --color-1: #647179;
   --color-2: #fff;
   --color-3: #0091ea;

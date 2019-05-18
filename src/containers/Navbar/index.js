@@ -25,7 +25,7 @@ class Navbar extends Component {
           <div className="logo-wrapper" onClick={this.goHome}>
             <img src={Logo} alt="filecloud" width="auto" height="55px" />
             <h1>
-              File<span className="half-logo">Cloud</span>
+              <span className="half-logo-first">File</span><span className="half-logo-second">Cloud</span>
             </h1>
           </div>
         </div>
@@ -56,19 +56,19 @@ class Navbar extends Component {
               )}
             </div>
           ) : (
-            <ul className="nav-links">
-              <li>
-                <Link className="Nav-link signin" to="/users/signin">
-                  Sign In
+              <ul className="nav-links">
+                <li>
+                  <Link className="Nav-link signin" to="/users/signin">
+                    Sign In
                 </Link>
-              </li>
-              <li>
-                <Link className="Nav-link signup" to="/users/signup">
-                  Sign Up
+                </li>
+                <li>
+                  <Link className="Nav-link signup" to="/users/signup">
+                    Sign Up
                 </Link>
-              </li>
-            </ul>
-          )}
+                </li>
+              </ul>
+            )}
         </div>
       </nav>
     );
