@@ -3,7 +3,7 @@ import { MdInsertDriveFile, MdMoreVert } from "react-icons/md";
 
 import "./style.css";
 
-const FileItem = props => {
+function FileItem(props) {
   const { title, url } = props.file;
   return (
     <div className="file-item-container">
@@ -23,6 +23,6 @@ const FileItem = props => {
       </div>
     </div>
   );
-};
+}
 
 export default FileItem;

@@ -13,7 +13,7 @@ import {
   fetchSingleFolder
 } from "../../store/actions/folder";
 
-const Routes = props => {
+function Routes(props) {
   const {
     authUser,
     currentUser,
@@ -74,7 +74,7 @@ const Routes = props => {
       } />
     </Switch>
   );
-};
+}
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,

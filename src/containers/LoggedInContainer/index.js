@@ -9,21 +9,19 @@ import {
   deleteFolderRequest
 } from "../../store/actions/folder";
 
-class LoggedInContainer extends Component {
-  render() {
-    const { currentUser, loading, folders } = this.props;
+function LoggedInContainer(props) {
+  const { currentUser, loading, folders } = props;
 
-    return (
-      <LoggedIn
-        currentUser={currentUser}
-        isLoading={loading}
-        createFolder={createFolderRequest}
-        fetchFolders={fetchFolders}
-        folders={folders}
-        deleteFolder={deleteFolderRequest}
-      />
-    );
-  }
+  return (
+    <LoggedIn
+      currentUser={currentUser}
+      isLoading={loading}
+      createFolder={createFolderRequest}
+      fetchFolders={fetchFolders}
+      folders={folders}
+      deleteFolder={deleteFolderRequest}
+    />
+  );
 }
 
 const mapStateToProps = state => ({

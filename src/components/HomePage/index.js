@@ -4,7 +4,7 @@ import LoggedInContainer from "../../containers/LoggedInContainer";
 
 import "./style.css";
 
-const Homepage = props => {
+function Homepage(props) {
   const {
     currentUser,
     createFolder,
@@ -28,6 +28,6 @@ const Homepage = props => {
       )}
     </div>
   );
-};
+}
 
 export default Homepage;
