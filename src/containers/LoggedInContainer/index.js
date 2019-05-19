@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import LoggedIn from "../../components/LoggedIn";
@@ -10,7 +10,14 @@ import {
 } from "../../store/actions/folder";
 
 function LoggedInContainer(props) {
-  const { currentUser, loading, folders } = props;
+  const {
+    currentUser,
+    loading,
+    folders,
+    createFolderRequest,
+    fetchFolders,
+    deleteFolderRequest
+  } = props;
 
   return (
     <LoggedIn

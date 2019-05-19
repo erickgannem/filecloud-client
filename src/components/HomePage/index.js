@@ -5,27 +5,10 @@ import LoggedInContainer from "../../containers/LoggedInContainer";
 import "./style.css";
 
 function Homepage(props) {
-  const {
-    currentUser,
-    createFolder,
-    fetchFolders,
-    folders,
-    deleteFolder
-  } = props;
+  const { currentUser } = props;
   return (
     <div className="Homepage">
-      {currentUser.isAuthenticated ? (
-        <LoggedInContainer
-          {...props}
-          currentUser={currentUser}
-          createFolder={createFolder}
-          fetchFolders={fetchFolders}
-          folders={folders}
-          deleteFolder={deleteFolder}
-        />
-      ) : (
-        <LoggedOut />
-      )}
+      {currentUser.isAuthenticated ? <LoggedInContainer /> : <LoggedOut />}
     </div>
   );
 }

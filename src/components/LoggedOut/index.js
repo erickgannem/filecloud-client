@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Padlock from "../../assets/padlock.svg";
-import File from "../../assets/pdf.svg";
-import Layout from "../../assets/web-design.svg";
+import { MdLock } from "react-icons/md";
+import { MdFileUpload } from "react-icons/md";
+import { MdViewCompact } from "react-icons/md";
 
 import "./style.css";
 
@@ -12,21 +12,21 @@ function LoggedOut() {
     <div className="LoggedOut">
       <div className="welcome-wrapper">
         <p className="welcome-message">
-          <strong>Filecloud</strong> is a cloud-based storaging service. Made
+          <strong>FileCloud</strong> is a cloud-based storaging service. Made
           with React.js on the frontend, React Native on the mobile and Node.js
           with Express and MongoDB on the backend.
         </p>
         <div className="feature-list">
           <div className="feature-item">
-            <img src={Padlock} width={48} height={48} alt="security" />
+            <MdLock size={48} className="feature-icon" />
             <span>User authentication and authorization with jsonWebToken</span>
           </div>
           <div className="feature-item">
-            <img src={File} width={48} height={48} alt="security" />
+            <MdFileUpload size={48} className="feature-icon" />
             <span>Upload and download files with Express.js</span>
           </div>
           <div className="feature-item">
-            <img src={Layout} width={48} height={48} alt="security" />
+            <MdViewCompact size={48} className="feature-icon" />
             <span>Blazing fast and responsive layout with React.js </span>
           </div>
         </div>

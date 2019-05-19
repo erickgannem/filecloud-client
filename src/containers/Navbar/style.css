@@ -16,11 +16,12 @@ nav {
 .Nav-link {
   color: var(--bluegrey-50);
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 .signup {
   color: var(--bluegrey-50);
-  background: var(--bluegrey-900);
+  border: 1.5px solid var(--bluegrey-50);
+  background: inherit;
 }
 nav div.right-side ul.nav-links {
   display: flex;
