@@ -1,0 +1,9 @@
+.upload-icon-container {
+}
+.upload-icon {
+  color: var(--grey-800);
+}
+.upload-text {
+  color: var(--grey-800);
+  font-size: 18px;
+}

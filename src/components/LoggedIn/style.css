@@ -18,21 +18,26 @@ div.folders-container {
   background: var(--amber-200);
   border-bottom: 2px solid var(--amber-400);
   color: var(--grey-800);
-  padding: 15px;
 }
 
-.folder-name {
-  padding: 5px;
-  border: 1px solid var(--grey-600);
-  border-radius: 4px;
+.folder-name-container {
+  display: flex;
+  align-items: center;
+  padding: 15px;
   text-align: center;
+  height: 100%;
+}
+.folder-name-text {
+  font-size: 16px;
+  color: var(--grey-800);
 }
 .folder-options {
   display: flex;
   align-items: center;
-  padding: 5px;
+  padding: 15px;
   cursor: pointer;
   color: var(--grey-800);
+  background: var(--amber-300);
 }
 .create-new-folder {
   color: var(--grey-800);
@@ -51,9 +56,5 @@ div.folders-container {
   margin-right: 5px;
 }
 .folder-options:hover {
-  background: var(--color-1);
-}
-
-.folder-options:hover .create-new-folder {
-  color: var(--color-2);
+  background: var(--amber-400);
 }

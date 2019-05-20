@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, useMemo } from "react";
 import LoadingScreen from "../LoadingScreen";
 import FileItemList from "../FileItemList";
 import CleanScreen from "../CleanScreen";
-import withAuth from "../../hocs/withAuth";
-import Dropzone from "react-dropzone";
-import { api } from "../../services/api";
-import { MdArrowBack } from "react-icons/md";
+import StyledDropzone from "../StyledDropzone";
 
+import withAuth from "../../hocs/withAuth";
+
+import { api } from "../../services/api";
+
+import { MdArrowBack } from "react-icons/md";
 import "./style.css";
 
 class FolderContent extends Component {
@@ -68,14 +70,7 @@ class FolderContent extends Component {
             <small className="file-name">{currentFolder.title}</small>
           </div>
         </div>
-        <Dropzone onDropAccepted={this.handleUpload}>
-          {({ getRootProps, getInputProps }) => (
-            <div className="upload" {...getRootProps()}>
-              <input {...getInputProps()} />
-              <p className="upload-text">Click here or drop files to upload</p>
-            </div>
-          )}
-        </Dropzone>
+        <StyledDropzone onDropAccepted={this.handleUpload} />
         <div className="file-list">
           {!!this.state.files.length > 0 ? hasFiles : <CleanScreen />}
         </div>

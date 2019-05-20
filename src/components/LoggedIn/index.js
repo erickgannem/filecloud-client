@@ -58,9 +58,9 @@ export default class LoggedIn extends Component {
           />
         )}
         <div className="folder-header">
-          <p className="folder-name">
-            <small>Root folder</small>
-          </p>
+          <div className="folder-name-container">
+            <p className="folder-name-text">Root folder</p>
+          </div>
 
           <div className="folder-options">
             <MdCreateNewFolder

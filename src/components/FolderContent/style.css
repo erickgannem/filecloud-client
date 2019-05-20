@@ -14,28 +14,27 @@
   justify-content: flex-start;
   width: 100%;
   background: var(--amber-200);
-  padding: 15px;
 }
 .file-name-wrapper {
   display: flex;
   align-items: center;
-  background: var(--color-2);
-  border: 1px solid var(--color-7);
-  border-radius: 5px;
+  background: inherit;
   text-align: center;
-  color: var(--color-1);
+  color: var(--grey-800);
+  align-items: center;
 }
 .file-name {
-  padding: 5px;
+  font-size: 16px;
+  padding: 15px;
 }
 .arrow-back-icon-wrapper {
-  padding: 5px;
   display: flex;
   align-items: center;
-  border-right: 1px solid var(--color-7);
+  background: var(--amber-300);
+  padding: 15px;
 }
 .arrow-back-icon-wrapper:hover {
-  background: var(--color-3);
+  background: var(--amber-400);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   cursor: pointer;
@@ -44,16 +43,6 @@
   color: var(--color-6);
 }
 
-.upload {
-  width: 100%;
-  background: var(--grey-100);
-
-  text-align: center;
-  cursor: pointer;
-  user-select: none;
-  height: 50px;
-}
-.upload-text {
-  color: var(--color-1);
-  user-select: none;
+.file-list {
+  margin-top: 15px;
 }
