@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import HomePage from "../../components/HomePage";
 import AuthForm from "../../components/AuthForm";
 import FolderContent from "../../components/FolderContent";
+import NotFound from "../../pages/NotFound";
 
 import { authUser } from "../../store/actions/auth";
 
@@ -72,6 +73,7 @@ function Routes(props) {
         )}
       />
       } />
+      <Route render={props => <NotFound />} />
     </Switch>
   );
 }
