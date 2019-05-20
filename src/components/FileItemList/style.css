@@ -1,6 +1,6 @@
 .file-item-container {
   width: 100vw;
-  background: var(--color-6);
+  background: var(--blue-900);
   padding: 15px;
   display: flex;
   flex-direction: row;
