@@ -8,7 +8,6 @@ import FolderContent from "../../components/FolderContent";
 import NotFound from "../../pages/NotFound";
 
 import { authUser } from "../../store/actions/auth";
-
 import {
   setCurrentFolder,
   fetchSingleFolder

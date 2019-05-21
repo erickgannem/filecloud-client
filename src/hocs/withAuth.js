@@ -28,6 +28,7 @@ export default function withAuth(ComponentToBeRendered) {
       );
     }
   }
+
   const mapStateToProps = state => ({
     currentUser: state.currentUser
   });

@@ -63,4 +63,6 @@
   text-decoration: none;
   color: var(--blue-900);
   font-size: 1.1em;
+  background: inherit;
+  border: none;
 }

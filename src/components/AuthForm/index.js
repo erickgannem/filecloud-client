@@ -15,7 +15,13 @@ export default class AuthForm extends Component {
     const endpoint = signUp ? "signup" : "signin";
     try {
       await onAuth(endpoint, this.state);
-      history.push("/");
+      if (endpoint === "signin") {
+        history.push("/");
+      } else {
+        // An activation token
+        // has been sent to your email
+        console.log("check your email");
+      }
     } catch (err) {
       return err;
     }
@@ -24,6 +30,7 @@ export default class AuthForm extends Component {
 
   render() {
     const { signUp, errors, isLoading } = this.props;
+
     return isLoading ? (
       <LoadingScreen />
     ) : (
@@ -73,9 +80,9 @@ export default class AuthForm extends Component {
           </button>
           {!signUp && (
             <small>
-              <a href="#" className="forgot">
+              <button href="#" className="forgot">
                 Forgot your password?
-              </a>
+              </button>
             </small>
           )}
         </form>

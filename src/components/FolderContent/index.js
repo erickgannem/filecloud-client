@@ -1,4 +1,4 @@
-import React, { Component, useMemo } from "react";
+import React, { Component } from "react";
 import LoadingScreen from "../LoadingScreen";
 import FileItemList from "../FileItemList";
 import CleanScreen from "../CleanScreen";

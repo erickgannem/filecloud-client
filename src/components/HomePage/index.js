@@ -8,7 +8,11 @@ function Homepage(props) {
   const { currentUser } = props;
   return (
     <div className="Homepage">
-      {currentUser.isAuthenticated ? <LoggedInContainer /> : <LoggedOut />}
+      {currentUser.isAuthenticated && currentUser.user.isVerified ? (
+        <LoggedInContainer />
+      ) : (
+        <LoggedOut />
+      )}
     </div>
   );
 }
