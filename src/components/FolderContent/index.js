@@ -44,6 +44,7 @@ class FolderContent extends Component {
         }
       });
     });
+    console.log("uploaded");
   };
   render() {
     const { isLoading, currentFolder } = this.props;
@@ -70,7 +71,7 @@ class FolderContent extends Component {
             <small className="file-name">{currentFolder.title}</small>
           </div>
         </div>
-        <StyledDropzone onDropAccepted={this.handleUpload} />
+        <StyledDropzone onDrop={this.handleUpload} />
         <div className="file-list">
           {!!this.state.files.length > 0 ? hasFiles : <CleanScreen />}
         </div>

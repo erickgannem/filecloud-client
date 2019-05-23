@@ -28,7 +28,7 @@ export default class LoggedIn extends Component {
   };
 
   // Socket.io
-  io = socket("http://localhost:3030");
+  io = socket("https://filecloud-server.herokuapp.com");
   susbscribeToFolderCreation = () => {
     this.io.emit("userSession", this.props.currentUser.user._id);
     this.io.on("create folder", data => this.newFolderUpdater(data));

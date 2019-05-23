@@ -24,6 +24,9 @@ class FolderItemList extends Component {
         <div className="folder-item-header">
           <MdFolder className="folder-icon" size={24} />
           <p className="folder-item-title">{this.props.folder.title}</p>
+          <small>
+            <strong>({this.props.folder.files.length} items)</strong>
+          </small>
         </div>
         <div className="folder-settings" onClick={this.optionsHandler}>
           <MdSettings className="settings-icon" size={24} />

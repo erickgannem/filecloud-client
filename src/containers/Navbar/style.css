@@ -46,6 +46,7 @@ nav div.right-side ul.nav-links .Nav-link {
   padding: 10px;
   border-radius: 5px;
   color: var(--bluegrey-50);
+  background: var(--blue-900);
 }
 nav div.right-side div.user-options:hover,
 .logo-wrapper {
@@ -57,7 +58,6 @@ nav div.left-side img:hover {
 
 .active,
 .user-options:hover {
-  background: var(--blue-900);
   color: var(--bluegrey-50);
 }
 

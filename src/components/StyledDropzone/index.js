@@ -5,20 +5,20 @@ import { MdFileUpload } from "react-icons/md";
 import "./index.css";
 
 const baseStyle = {
-  flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  padding: "25px",
-  borderWidth: 2,
-  borderRadius: 4,
-  borderColor: "#757575",
-  borderStyle: "dashed",
-  backgroundColor: "#eeeeee",
-  color: "#757575",
-  outline: "none",
-  transition: "border .24s ease-in-out",
-  cursor: "pointer"
+  // flex: 1,
+  // display: "flex",
+  // flexDirection: "column",
+  // alignItems: "center",
+  padding: "25px"
+  // borderWidth: 2,
+  // borderRadius: 4,
+  // borderColor: "#757575",
+  // borderStyle: "dashed",
+  // backgroundColor: "#eeeeee",
+  // color: "#757575",
+  // outline: "none",
+  // transition: "border .24s ease-in-out",
+  // cursor: "pointer"
 };
 
 const activeStyle = {
@@ -34,13 +34,14 @@ const rejectStyle = {
 };
 
 export default function StyledDropzone(props) {
+  const onDrop = props.onDrop;
   const {
     getRootProps,
     getInputProps,
     isDragActive,
     isDragAccept,
     isDragReject
-  } = useDropzone({ accept: "image/*" });
+  } = useDropzone({ onDrop });
 
   const style = useMemo(
     () => ({
@@ -51,8 +52,9 @@ export default function StyledDropzone(props) {
     }),
     [isDragActive, isDragReject]
   );
+
   return (
-    <div className="container" style={{ width: "100%" }}>
+    <div className="container">
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <div className="upload-icon-container">

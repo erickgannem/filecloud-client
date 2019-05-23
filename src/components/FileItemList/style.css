@@ -1,13 +1,12 @@
 .file-item-container {
-  width: 100vw;
-  background: var(--blue-900);
-  padding: 15px;
   display: flex;
   flex-direction: row;
+  padding: 15px;
+  margin: 0 10px;
+  background: var(--grey-100);
+  border-radius: 4px;
+  border: 1px solid var(--blue-900);
   justify-content: space-between;
-  margin-top: 10px;
-  border-top: 1px solid var(--color-8);
-  border-bottom: 1px solid var(--color-8);
 }
 .file-item-header {
   display: flex;
