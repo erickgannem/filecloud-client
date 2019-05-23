@@ -15,7 +15,7 @@ export default class LoggedIn extends Component {
   };
   newFolderUpdater = data => {
     this.setState(prevState => ({
-      folders: [...prevState.folders, data]
+      folders: [data, ...prevState.folders]
     }));
   };
   deleteFolderUpdater = data => {

@@ -4,11 +4,14 @@ import FileItemList from "../FileItemList";
 import CleanScreen from "../CleanScreen";
 import StyledDropzone from "../StyledDropzone";
 
+import socket from "socket.io-client";
+
 import withAuth from "../../hocs/withAuth";
 
 import { api } from "../../services/api";
 
 import { MdArrowBack } from "react-icons/md";
+
 import "./style.css";
 
 class FolderContent extends Component {
@@ -17,7 +20,7 @@ class FolderContent extends Component {
   };
   async componentDidMount() {
     const { isAuthorized, currentUser, match, onFetch } = this.props;
-
+    this.subscribeToNewFiles();
     if (currentUser.isAuthenticated && isAuthorized) {
       const { _id } = currentUser.user;
       const { folder_id } = match.params;
@@ -29,8 +32,22 @@ class FolderContent extends Component {
   }
   componentWillUnmount() {
     const { dispatch, setCurrentFolder } = this.props;
+    this.io.removeAllListeners();
     dispatch(setCurrentFolder({}));
   }
+
+  handleNewFile = newFile => {
+    this.setState(prevState => ({
+      files: [newFile, ...prevState.files]
+    }));
+  };
+  // Socket.io
+  io = socket("https://filecloud-server.herokuapp.com");
+  subscribeToNewFiles = () => {
+    this.io.emit("userSession", this.props.currentUser.user._id);
+    this.io.on("new file", newFile => this.handleNewFile(newFile));
+  };
+
   handleUpload = files => {
     const { _id: userId, token } = this.props.currentUser.user;
     const { _id: folderId } = this.props.currentFolder;
@@ -44,7 +61,6 @@ class FolderContent extends Component {
         }
       });
     });
-    console.log("uploaded");
   };
   render() {
     const { isLoading, currentFolder } = this.props;
