@@ -6,6 +6,7 @@ import HomePage from "../../components/HomePage";
 import AuthForm from "../../components/AuthForm";
 import FolderContent from "../../components/FolderContent";
 import NotFound from "../../pages/NotFound";
+import CheckMail from "../../pages/CheckMail";
 
 import { authUser } from "../../store/actions/auth";
 import {
@@ -72,6 +73,7 @@ function Routes(props) {
         )}
       />
       } />
+      <Route exact path="/users/signup/activate" component={CheckMail} />
       <Route render={props => <NotFound />} />
     </Switch>
   );

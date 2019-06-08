@@ -18,9 +18,7 @@ export default class AuthForm extends Component {
       if (endpoint === "signin") {
         history.push("/");
       } else {
-        // An activation token
-        // has been sent to your email
-        console.log("check your email");
+        history.push("/users/signup/activate");
       }
     } catch (err) {
       return err;
